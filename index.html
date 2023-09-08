@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeltaNet</title>
+    <style>
+        body {
+            font-family: 'DTM-Mono', sans-serif;
+            background-color: #0F4F8A;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #chat-container {
+            width: 300px;
+            background-color: #2E6E38;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #chat-messages {
+            max-height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #1B1B1B;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #message-input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #send-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4E4E4E;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #6E6E6E;
+        }
+
+        /* Notification Sound */
+        #notification-sound {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <!-- Notification Sound -->
+    <audio id="notification-sound" src="snd_select.wav"></audio>
+
+    <script>
+        const chatMessages = document.getElementById("chat-messages");
+        const messageInput = document.getElementById("message-input");
+        const sendButton = document.getElementById("send-button");
+        const notificationSound = document.getElementById("notification-sound");
+
+        sendButton.addEventListener("click", () => {
+            const message = messageInput.value.trim();
+            if (message !== "") {
+                appendMessage("You", message);
+                // Simulate a bot response after a short delay
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    appendMessage("Bot", botResponse);
+                    // Play notification sound
+                    notificationSound.play();
+                }, 1000);
+                messageInput.value = "";
+            }
+        });
+
+        function appendMessage(sender, message) {
+            const messageElement = document.createElement("div");
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getBotResponse(message) {
+            // You can customize the bot's responses here based on user input
+            // For simplicity, let's just echo the user's message with "Bot" added
+            return "Bot: " + message;
+        }
+    </script>
+</body>
+</html>
