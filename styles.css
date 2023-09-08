@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'YourFontName';
-    src: url('./Determination/DTM-Mono.ttf') format('ttf'),
-         url('./Determination/DTM-Mono.otf') format('otf');
-    /* Add additional formats if needed */
-    font-weight: normal; /* or bold for bold fonts */
-    font-style: normal; /* or italic for italic fonts */
-}

@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'Determination';
+    src: url('./Determination/DTM-Mono.ttf') format('ttf'),
+         url('./Determination/DTM-Mono.otf') format('otf'),
+         url('./Determination/DTM-Sans.otf') format('otf'),
+         url('./Determination/DTM-Sans.ttf') format('ttf')
+
+    font-weight: normal; /* or bold for bold fonts */
+    font-style: normal; /* or italic for italic fonts */
+}
+body {
+    font-family: 'Determination', sans-serif;
+}
+
+/* Specific elements or classes */
+h1, h2, h3 {
+    font-family: 'Determination', monospace;
+}
+
+/* Use a class to apply the font to specific elements */
+.custom-font {
+    font-family: 'YourFontName', sans-serif;
+}
